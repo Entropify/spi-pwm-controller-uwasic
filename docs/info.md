@@ -9,7 +9,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-An SPI-controlled PWM peripheral chip built for the UWASIC onboarding project by Zhiyuan (Jerry) Jiang.
+An SPI-controlled PWM peripheral chip built for UWASIC admission by Zhiyuan (Jerry) Jiang.
 
 ## How to test
 

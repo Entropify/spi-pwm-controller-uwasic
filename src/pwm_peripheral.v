@@ -1,8 +1,3 @@
-/*
- * Copyright (c) 2024 Damir Gazizullin
- * SPDX-License-Identifier: Apache-2.0
- */
-
 `default_nettype none
 
 module pwm_peripheral (
