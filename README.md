@@ -4,9 +4,8 @@
 
 We are a University of Waterloo design team that makes ASICs (application-specific integrated circuits).
 
-Please read the [onboarding documentation](https://docs.uwasic.com/s/onboarding) first.
+Please read the [documentation](https://docs.uwasic.com/s/onboarding) first.
 
-Then, fork this repository to get started.
 Happy coding!
 
 ## Set up your Verilog project
