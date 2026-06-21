@@ -32,6 +32,8 @@ Overall, this project was definitely a bit confusing at first but very fun and r
 
 I gained a lot of insights into communication protocols, signal management and mapping, metastability resolution techniques, automated testbenching setups, terminal logging, RTL design and verification workflow, etc.
 
+Tools and concepts learned: Verilog, Cocotb, SPI Protocol, Register Mapping, PWM, CDC, Metastability, Signal Verification, Synchronizers, GTKWave, Icarius Verilog, Makefile, WSL, Terminal Logging, Github Actions Workflow, Tiny Tapeout Interface Standard, Skywater 130 nm PDK
+
 ---
 
 ## Peripheral Chip Architecture
