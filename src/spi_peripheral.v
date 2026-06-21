@@ -29,7 +29,7 @@ wire sclk_posedge, ncs_posedge, ncs_negedge;
 
 reg [15:0] copi_received;
 
-reg [3:0] bit_counter;
+reg [4:0] bit_counter;
 
 sync_2ff sclk_2ff (
     .in(sclk),
@@ -82,12 +82,12 @@ always @(posedge clk) begin
         bit_counter <= 4'b0;
     end
 
-    else if (sclk_posedge && !ncs_post_2ff) begin
+    if (sclk_posedge && !ncs_post_2ff && !ncs_negedge) begin
         bit_counter <= bit_counter + 1;
-        copi_received[15 - bit_counter] <= copi_post_2ff;
+        copi_received <= {copi_received[14:0], copi_post_2ff};
     end
 
-    else if (ncs_posedge) begin
+    if (ncs_posedge && bit_counter == 16 ) begin
 
         if (copi_received[15] == 1) begin
 
