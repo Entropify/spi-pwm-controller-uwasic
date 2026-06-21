@@ -151,7 +151,7 @@ The COPI line uses level sampling rather than edge detection, since its value on
 
 ## Verification
 
-Verification was written in Python using [cocotb](https://www.cocotb.org/) with Icarus Verilog as the simulator. Three test functions cover the full design implemented with `async` Python functions and `await` to run simulation in parallel:
+Verification was written in Python using [cocotb](https://www.cocotb.org/) with [Icarus Verilog](https://github.com/steveicarus/iverilog) as the simulator. Three test functions cover the full design implemented with `async` Python functions and `await` to run simulation in parallel:
 
 ### test_spi
 
