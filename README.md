@@ -119,9 +119,9 @@ Example transmission value:
 
 Transactions are initialized by NCS going low at the start and high at the end. The 16 data bits are clocked in MSB-first on the rising edge of SCLK. The register is written on the rising edge of NCS after all 16 bits have been received. Writes to addresses above `0x04` are silently ignored. Read transactions (R/W bit = 0) are accepted but produce no output.
 
-Internally, a 16-bit shift register `copi_received[15:0]` accumulates incoming bits. 
+Internally, a 16-bit shift register `copi_received[15:0]` accumulates incoming bits and is implemented with a saturation guard to ensure `bit_counter == 16` before committing.
 
-A 4-bit `bit_counter` tracks the position of the currently transmitted bit. It reset on each NCS falling edge and increments on each SCLK rising edge while NCS is low.
+A 5-bit `bit_counter` tracks the position of the currently transmitted bit. It reset on each NCS falling edge and increments on each SCLK rising edge while NCS is low.
 
 ---
 
@@ -201,7 +201,6 @@ Verifies that the PWM outputs at the correct frequency. Setup writes to register
 period = t_rising_edge2 - t_rising_edge1          
 frequency = (1 / period) * 1e9                    
 assert 3000 * 0.99 < frequency < 3000 * 1.01
-#code omitted
 ```
 
 ### test_pwm_duty
@@ -213,7 +212,6 @@ high_time  = t_falling_edge - t_rising_edge1
 period     = t_rising_edge2 - t_rising_edge1
 duty_cycle = (high_time / period) * 100
 assert 50 * 0.99 < duty_cycle < 50 * 1.01
-#code omitted
 ```
 
 The 0% and 100% edge cases are verified by sampling `uo_out[0]` 12 times across about 36,000 clock cycles and `assert`ing the output is constant low or constant high respectively.
@@ -228,7 +226,37 @@ The SPI bus runs in a different clock domain from the system clock (simulated `s
 
 The solution was a `sync_2ff` two-flip-flop synchronizer on all three SPI input signals to greatly decrease the probability that when the value on the flip-flop is sampled on the next `clk` edge, T<sub>CO</sub> hasn't ended. Edge detection is then performed on the synchronized outputs, ensuring all downstream logic operates cleanly in the system clock domain.
 
-### 2. Cocotb VPI Limitation with Wire Signals
+### 2. SPI Shift Register and Counter Bugs
+
+After completing the initial implementation, a UW ASIC lead reviewed the design and identified some issues in `spi_peripheral.v`:
+
+__Indexed write to register__
+
+The original implementation used an indexed write to accumulate incoming COPI bits. This was replaced with a proper shift register, which is the standard hardware pattern for serial data accumulation:
+
+```verilog
+
+copi_received <= {copi_received[14:0], copi_post_2ff};
+
+```
+
+__4-bit counter overflow__
+
+The original `bit_counter` was 4 bits wide, meaning it would wrap from 15 back to 0 if extra SCLK edges arrived before NCS deasserted. This would cause earlier received bits to be overwritten, corrupting `copi_received`. The counter was widened to 5 bits and a saturation guard was added. The register write on NCS rising edge is now only committed if exactly 16 bits were received:
+
+```verilog
+
+if (ncs_posedge && bit_counter == 16) begin
+    // code omitted
+end
+
+```
+
+In practice, this bug never triggered during testing because the cocotb `send_spi_transaction` helper always sends exactly 16 bits and immediately deasserts NCS — so bit_counter never had the opportunity to reach 16 and wrap before the transaction ended. However, a real SPI master on hardware is not guaranteed to behave this cleanly. Widening to 5 bits and adding the saturation guard ensures the design is safe against inaccurate or extended transactions from the master chip.
+
+For the future, I realized a dedicated test sending incorrect transactions (fewer than 16 bits, more than 16 bits, or NCS deasserted mid-transaction) would provide more extended testing for the peripheral chip's ability to handle errors.
+
+### 3. Cocotb VPI Limitation with Wire Signals
 
 The cocotb `RisingEdge` and `FallingEdge` triggers work by registering a value change callback with the simulator via VPI. The version of Icarus Verilog I was using apparently did not support these callbacks on `wire` nets driven by submodule output ports, producing the error:
 
@@ -253,7 +281,7 @@ Initializing `prev` from the current signal value rather than hardcoding 0 was v
 
 This caused false edge detection on the first clock cycle when the signal was already high, resulting in a measured frequency exactly equal to the system clock and a ridiculously high error percentage of 333233.33% for the `pwm_frequency` test (I laughed out loud when I saw that number on the terminal 😭✌️).
 
-### 3. Cocotb Version Pinning
+### 4. Cocotb Version Pinning
 
 The simulation environment runs Python 3.14. Cocotb 2.x introduced breaking changes that are incompatible with Python 3.14 at the time of this project. Cocotb had to be pinned to version 1.9.2 in `requirements.txt` to maintain a stable environment.
 
