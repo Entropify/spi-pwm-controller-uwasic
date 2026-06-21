@@ -38,12 +38,7 @@ I gained a lot of insights into communication protocols, signal management and m
 
 The design is composed of three Verilog modules instantiated under the standard Tiny Tapeout top-level interface:
 
-```
-tt_um_uwasic_zjj (project.v)
-├── spi_peripheral (spi_peripheral.v)
-│   └── sync_2ff x3         (SCLK, COPI, NCS synchronizers)
-└── pwm_peripheral (pwm_peripheral.v)
-```
+(will create architecture diagram soon)
 
 The top-level module `tt_um_uwasic_zjj` wires the TT standard ports to the two peripherals. The SPI peripheral decodes incoming transactions and drives five configuration registers as wires into the PWM peripheral. The PWM peripheral uses those registers to control a 16-bit output bus, mapped to a concatenated vector of `uo_out[7:0]` and `uio_out[7:0]`.
 
@@ -296,4 +291,5 @@ All four workflows passed as shown at the top of this README in badges.
 SPDX-License-Identifier: Apache-2.0
 
 Copyright (c) 2026 Zhiyuan (Jerry) Jiang — design and testbench
+
 Copyright (c) 2024 Tiny Tapeout — project template and CI workflows
