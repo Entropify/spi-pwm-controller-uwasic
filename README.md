@@ -238,7 +238,7 @@ The simulation environment runs Python 3.14. Cocotb 2.x introduced breaking chan
 
 ---
 
-## Continuous Integration Workflows (by UWASIC and Tiny Tapeout)
+## Continuous Integration Workflows (provided by UWASIC and Tiny Tapeout)
 
 Four GitHub Actions workflows run automatically on push:
 
