@@ -10,7 +10,7 @@ The design accepts SPI commands to configure output enable and PWM mode on a per
 
 ---
 
-## Peripheral Architecture
+## Peripheral Chip Architecture
 
 The design is composed of three Verilog modules instantiated under the standard Tiny Tapeout top-level interface:
 
