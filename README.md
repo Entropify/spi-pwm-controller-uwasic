@@ -1,6 +1,6 @@
 ![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
 
-# SPI-Controlled PWM Peripheral
+# SPI-Controlled PWM Peripheral Chip
 
 A 16-channel SPI-controlled PWM peripheral chip following the SKY130 PDK and Tiny Tapeout's standard tile interface. This was my first silicon tapeout project (yay!), and I completed it in order to join the University of Waterloo ASIC design team and learn more about RTL design and verification myself.
 
