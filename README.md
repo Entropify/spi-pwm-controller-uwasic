@@ -4,7 +4,7 @@
 
 A 16-channel SPI-controlled PWM peripheral chip following the SKY130 PDK and Tiny Tapeout's standard tile interface. This was my first silicon tapeout project (yay!), and I completed it in order to join the University of Waterloo ASIC design team and learn more about RTL design and verification myself.
 
-Overall, this project was very rewarding and I gained a lot of insights into communication protocols, signal management and mapping, metastability resolution techniques, automated testbenching setups, terminal logging, etc.
+Overall, this project was very fun and I gained a lot of insights into communication protocols, signal management and mapping, metastability resolution techniques, automated testbenching setups, terminal logging, etc.
 
 The design accepts SPI commands to configure output enable and PWM mode on a per-pin basis across 16 output channels, and generates a ~3 kHz PWM signal with configurable duty cycle.
 
@@ -198,7 +198,9 @@ The 0% and 100% edge cases are verified by sampling `uo_out[0]` 12 times across 
 
 ### 1. Clock Domain Crossing on SPI Signals
 
-The SPI bus runs in a different clock domain from the system clock (simulated `sclk` from master is 100 KHz whilst internal `clk` of the SPI module is at a much higher ). Naively registering SCLK or NCS on a system clock edge risks sampling during a metastable transition which violates T<sub>su</sub> and T<sub>H</sub> and potentially causes a metastable signal to propagate in the chip. The solution was a `sync_2ff` two-flip-flop synchronizer on all three SPI input signals to greatly decrease the probability that when the value on the flip-flop is sampled on the next `clk` edge, T<sub>CO</sub> hasn't ended. Edge detection is then performed on the synchronized outputs, ensuring all downstream logic operates cleanly in the system clock domain.
+The SPI bus runs in a different clock domain from the system clock (simulated `sclk` from master is 100 KHz whilst internal `clk` of the SPI module is at a much higher ). Naively registering SCLK or NCS on a system clock edge risks sampling during a metastable transition which violates T<sub>su</sub> and T<sub>H</sub> and potentially causes a metastable signal to propagate in the chip. 
+
+The solution was a `sync_2ff` two-flip-flop synchronizer on all three SPI input signals to greatly decrease the probability that when the value on the flip-flop is sampled on the next `clk` edge, T<sub>CO</sub> hasn't ended. Edge detection is then performed on the synchronized outputs, ensuring all downstream logic operates cleanly in the system clock domain.
 
 ### 2. Cocotb VPI Limitation with Wire Signals
 
@@ -221,7 +223,9 @@ async def wait_for_rising_edge(dut):
         prev = curr
 ```
 
-Initializing `prev` from the current signal value rather than hardcoding 0 was very important as I encountered another bug when I first hardcoded `prev = 0`. This caused false edge detection on the first clock cycle when the signal was already high, resulting in a measured frequency exactly equal to the system clock and a ridiculously high error percentage of 333233.33% for the `pwm_frequency` test (I laughed out loud when I saw that number on the terminal 😭✌️).
+Initializing `prev` from the current signal value rather than hardcoding 0 was very important as I encountered another bug when I first hardcoded `prev = 0`. 
+
+This caused false edge detection on the first clock cycle when the signal was already high, resulting in a measured frequency exactly equal to the system clock and a ridiculously high error percentage of 333233.33% for the `pwm_frequency` test (I laughed out loud when I saw that number on the terminal 😭✌️).
 
 ### 3. Cocotb Version Pinning
 
