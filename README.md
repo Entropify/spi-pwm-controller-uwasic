@@ -9,7 +9,7 @@ This was my first silicon tapeout project, and I completed it in order to join t
 
 Overall, this project was very fun and rewarding! 
 
-I gained a lot of insights into communication protocols, signal management and mapping, metastability resolution techniques, automated testbenching setups, terminal logging, etc.
+I gained a lot of insights into communication protocols, signal management and mapping, metastability resolution techniques, automated testbenching setups, terminal logging, RTL design and verification workflow, etc.
 
 ---
 
