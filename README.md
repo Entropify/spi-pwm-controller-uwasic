@@ -84,7 +84,7 @@ Use this link for a proper interactive 3D render of the GDS (ctrl + click to ope
 
 All registers reset to `0x00` when `rst_n` is pulled to low and are written via SPI write transactions. Read transactions are not supported and are silently ignored.
 
-| Address | Register | Description | Resetted Value |
+| Address | Register | Description | Reset Value |
 |---------|----------|-------------|----------------|
 | `0x00` | `en_reg_out_7_0` | Output enable for `uo_out[7:0]` | `0x00` |
 | `0x01` | `en_reg_out_15_8` | Output enable for `uio_out[7:0]` | `0x00` |
@@ -130,7 +130,7 @@ A 4-bit `bit_counter` tracks the position of the currently transmitted bit. It r
 The PWM signal is generated in `pwm_peripheral.v` using a two-stage counter:
 
 ```verilog
-localparam clk_div_trig = 12; #a local parameter to be easily modified for different PWM periods as needed
+localparam clk_div_trig = 12; //a local parameter to be easily modified for different PWM periods as needed
 reg [10:0] clk_counter;
 reg [7:0]  pwm_counter;
 
@@ -224,7 +224,7 @@ The 0% and 100% edge cases are verified by sampling `uo_out[0]` 12 times across 
 
 ### 1. Clock Domain Crossing on SPI Signals
 
-The SPI bus runs in a different clock domain from the system clock (simulated `sclk` from master is 100 KHz whilst internal `clk` of the SPI module is at a much higher ). Naively registering SCLK or NCS on a system clock edge risks sampling during a metastable transition which violates T<sub>su</sub> and T<sub>H</sub> and potentially causes a metastable signal to propagate in the chip. 
+The SPI bus runs in a different clock domain from the system clock (simulated `sclk` from master is 100 KHz whilst internal `clk` of the SPI module is at a much higher ). Natively registering SCLK or NCS on a system clock edge risks sampling during a metastable transition which violates T<sub>su</sub> and T<sub>H</sub> and potentially causes a metastable signal to propagate in the chip. 
 
 The solution was a `sync_2ff` two-flip-flop synchronizer on all three SPI input signals to greatly decrease the probability that when the value on the flip-flop is sampled on the next `clk` edge, T<sub>CO</sub> hasn't ended. Edge detection is then performed on the synchronized outputs, ensuring all downstream logic operates cleanly in the system clock domain.
 
