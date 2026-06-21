@@ -32,9 +32,9 @@ Overall, this project was definitely a bit confusing at first but very fun and r
 
 I gained a lot of insights into communication protocols, signal management and mapping, metastability resolution techniques, automated testbenching setups, terminal logging, RTL design and verification workflow, etc.
 
-__Tools learned:__ Verilog, Cocotb, GTKWave, Icarus Verilog, Makefile, WSL, Terminal Logging, Github Actions Workflow, Tiny Tapeout Interface Standard, SkyWater 130 nm PDK
+___Tools learned:___ Verilog, Cocotb, GTKWave, Icarus Verilog, Makefile, WSL, Terminal Logging, Github Actions Workflow, Tiny Tapeout Interface Standard, SkyWater 130 nm PDK
 
-__Concepts learned:__ SPI Protocol, RTL Verification and Testbenching, Register Mapping, PWM, CDC, Metastability, Bit-banging, Signal Verification, Edge Detection, Synchronizers
+___Concepts learned:___ SPI Protocol, RTL Verification and Testbenching, Register Mapping, PWM, CDC, Metastability, Bit-banging, Signal Verification, Edge Detection, Synchronizers
 
 ---
 
