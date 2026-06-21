@@ -60,7 +60,7 @@ Pin assignments on `ui_in`:
 
 Use this link for a proper interactive 3D render of the GDS (ctrl + click to open in new tab): https://entropify.github.io/spi-pwm-controller-uwasic/
 
-![gds](docs/imgs/gds_view.png)
+![gds](docs/images/gds_view.png)
 
 ---
 
