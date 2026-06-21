@@ -24,6 +24,10 @@ The design accepts SPI commands to configure output enable and PWM mode on a per
 ```
 
 ---
+## GDS View
+![gds](docs/imgs/gds_view.png)
+
+---
 
 ## Peripheral Architecture
 
