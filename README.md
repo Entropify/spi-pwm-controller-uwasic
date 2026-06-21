@@ -34,7 +34,7 @@ I gained a lot of insights into communication protocols, signal management and m
 
 __Tools learned:__ Verilog, Cocotb, GTKWave, Icarus Verilog, Makefile, WSL, Terminal Logging, Github Actions Workflow, Tiny Tapeout Interface Standard, SkyWater 130 nm PDK
 
-__Concepts learned:__ SPI Protocol, RTL Verification and Testbenching, Register Mapping, PWM, CDC, Metastability, Signal Verification, Synchronizers
+__Concepts learned:__ SPI Protocol, RTL Verification and Testbenching, Register Mapping, PWM, CDC, Metastability, Bit-banging, Signal Verification, Edge Detection, Synchronizers
 
 ---
 
