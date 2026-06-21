@@ -110,7 +110,7 @@ A 4-bit `bit_counter` tracks the position of the currently transmitted bit. It r
 The PWM signal is generated in `pwm_peripheral.v` using a two-stage counter:
 
 ```verilog
-localparam clk_div_trig = 12; #a local perimeter to be easily modified for different PWM periods as needed
+localparam clk_div_trig = 12; #a local parameter to be easily modified for different PWM periods as needed
 reg [10:0] clk_counter;
 reg [7:0]  pwm_counter;
 
