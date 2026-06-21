@@ -6,23 +6,6 @@ A 16-channel SPI-controlled PWM peripheral submitted to Tiny Tapeout 10 (TT10), 
 
 The design accepts SPI commands to configure output enable and PWM mode on a per-pin basis across 16 output channels, and generates a ~3 kHz PWM signal with configurable duty cycle.
 
----
-
-## Table of Contents
-
-- [Project Structure](#project-structure)
-- [Architecture](#architecture)
-- [Register Map](#register-map)
-- [SPI Protocol](#spi-protocol)
-- [PWM Generation](#pwm-generation)
-- [Clock Domain Crossing](#clock-domain-crossing)
-- [Verification](#verification)
-- [Challenges and Solutions](#challenges-and-solutions)
-- [Tools and Environment](#tools-and-environment)
-- [CI Workflows](#ci-workflows)
-
----
-
 ## Project Structure
 
 ```
