@@ -11,16 +11,18 @@ This was my very first silicon tapeout project, and I completed it in order to j
 ## Table of Contents
 
 - [What I learned](#what-i-learned)
-- [Project Structure](#project-structure)
-- [Architecture](#architecture)
+- [Peripheral Chip Architecture](#peripheral-chip-architecture)
+- [GDS View](#gds-view)
+- [Overall Project Structure](#overall-project-structure)
 - [Register Map](#register-map)
 - [SPI Protocol](#spi-protocol)
 - [PWM Generation](#pwm-generation)
 - [Clock Domain Crossing](#clock-domain-crossing)
 - [Verification](#verification)
-- [Challenges and Solutions](#challenges-and-solutions)
+- [Challenges I faced and Solutions](#challenges-i-faced-and-solutions)
 - [Tools and Environment](#tools-and-environment)
-- [CI Workflows](#ci-workflows)
+- [Continuous Integration Workflows](#continuous-integration-workflows)
+- [License](#license)
 
 ---
 
@@ -63,8 +65,8 @@ Use this link for a proper interactive 3D render of the GDS (ctrl + click to ope
 
 ---
 
-## Overall Project Structure (Unimportant files omitted)
-
+## Overall Project Structure 
+(Unimportant files omitted)
 ```
 |
 ├── src/
@@ -273,8 +275,9 @@ The simulation environment runs Python 3.14. Cocotb 2.x introduced breaking chan
 
 ---
 
-## Continuous Integration Workflows (provided by UWASIC and Tiny Tapeout)
+## Continuous Integration Workflows 
 
+(provided by UWASIC and Tiny Tapeout)
 Four GitHub Actions workflows run automatically on push:
 
 | Workflow | Trigger | Description |
