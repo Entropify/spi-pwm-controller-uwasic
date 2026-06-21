@@ -8,6 +8,21 @@ A 16-channel SPI-controlled PWM peripheral chip following the SKY130 PDK and Tin
 This was my very first silicon tapeout project, and I completed it in order to join the University of Waterloo ASIC design team and learn more about RTL design and verification myself.
 
 ---
+## Table of Contents
+
+- [What I learned](#what-i-learned)
+- [Project Structure](#project-structure)
+- [Architecture](#architecture)
+- [Register Map](#register-map)
+- [SPI Protocol](#spi-protocol)
+- [PWM Generation](#pwm-generation)
+- [Clock Domain Crossing](#clock-domain-crossing)
+- [Verification](#verification)
+- [Challenges and Solutions](#challenges-and-solutions)
+- [Tools and Environment](#tools-and-environment)
+- [CI Workflows](#ci-workflows)
+
+---
 
 ## What I learned
 
