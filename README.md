@@ -8,25 +8,6 @@ Overall, this project was very rewarding and I gained a lot of insights into com
 
 The design accepts SPI commands to configure output enable and PWM mode on a per-pin basis across 16 output channels, and generates a ~3 kHz PWM signal with configurable duty cycle.
 
-## Overall Project Structure (Unimportant files omitted)
-
-```
-.
-├── src/
-│   ├── project.v           # Top-level module (tt_um_uwasic_zjj)
-│   ├── spi_peripheral.v    # SPI receiver + register file + sync_2ff CDC submodule
-│   └── pwm_peripheral.v    # PWM signal generator and output mux
-└──test/
-    ├── test.py             # Cocotb testbenches (test_spi, test_pwm_freq, test_pwm_duty)
-    ├── tb.v                # Verilog testbench
-    └── Makefile            # Cocotb build and run config
-
-```
-
----
-## GDS View
-![gds](docs/imgs/gds_view.png)
-
 ---
 
 ## Peripheral Architecture
@@ -50,6 +31,27 @@ Pin assignments on `ui_in`:
 | `ui_in[1]` | COPI |
 | `ui_in[2]` | NCS |
 
+---
+
+## GDS View
+![gds](docs/imgs/gds_view.png)
+
+---
+
+## Overall Project Structure (Unimportant files omitted)
+
+```
+|
+├── src/
+│   ├── project.v           # Top-level module (tt_um_uwasic_zjj)
+│   ├── spi_peripheral.v    # SPI receiver + register file + sync_2ff CDC submodule
+│   └── pwm_peripheral.v    # PWM signal generator and output mux
+└──test/
+    ├── test.py             # Cocotb testbenches (test_spi, test_pwm_freq, test_pwm_duty)
+    ├── tb.v                # Verilog testbench
+    └── Makefile            # Cocotb build and run config
+
+```
 ---
 
 ## Register Map
@@ -192,7 +194,7 @@ The 0% and 100% edge cases are verified by sampling `uo_out[0]` 12 times across 
 
 ---
 
-## Challenges and Solutions
+## Challenges I faced and Solutions
 
 ### 1. Clock Domain Crossing on SPI Signals
 
