@@ -2,7 +2,9 @@
 
 # SPI-Controlled PWM Peripheral
 
-A 16-channel SPI-controlled PWM peripheral chip following the SKY130 PDK. This was my first silicon tapeout project, and I completed it as my University of Waterloo ASIC design team onboarding assignment.
+A 16-channel SPI-controlled PWM peripheral chip following the SKY130 PDK and Tiny Tapeout's standard tile interface. This was my first silicon tapeout project (yay!), and I completed it in order to join the University of Waterloo ASIC design team and learn more about RTL design and verification myself.
+
+Overall, this project was very rewarding and I gained a lot of insights into communication protocols, signal management and mapping, metastability resolution techniques, automated testbenching setups, terminal logging, etc.
 
 The design accepts SPI commands to configure output enable and PWM mode on a per-pin basis across 16 output channels, and generates a ~3 kHz PWM signal with configurable duty cycle.
 
@@ -23,7 +25,7 @@ The design accepts SPI commands to configure output enable and PWM mode on a per
 
 ---
 
-## Architecture
+## Peripheral Architecture
 
 The design is composed of three Verilog modules instantiated under the standard Tiny Tapeout top-level interface:
 
