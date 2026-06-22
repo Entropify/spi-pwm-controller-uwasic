@@ -218,6 +218,16 @@ assert 50 * 0.99 < duty_cycle < 50 * 1.01
 
 The 0% and 100% edge cases are verified by sampling `uo_out[0]` 12 times across about 36,000 clock cycles and `assert`ing the output is constant low or constant high respectively.
 
+### Example Screenshots of GTKWave and Terminal Logs after Verification
+
+Example waveform during test_spi write tests:
+
+![gtkwave](docs/images/gtk_wave.png) 
+
+Example logs during test_pwm_freq:
+
+![logs](docs/images/sample_logs.png)
+
 ---
 
 ## Challenges I faced and Solutions
