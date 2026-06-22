@@ -40,7 +40,9 @@ I gained a lot of insights into communication protocols, signal management and m
 
 ## Peripheral Chip Architecture
 
-The design is composed of three Verilog modules instantiated under the standard Tiny Tapeout top-level interface:
+The design is composed of three Verilog modules instantiated under the standard Tiny Tapeout top-level interface.
+
+This diagram shows the entire peripheral chip and how it is emcompassed in the testbenching workflow using Cocotb and Icarus Verilog.
 
 ![architecture](docs/images/architecture.png)
 
