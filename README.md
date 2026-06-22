@@ -199,7 +199,7 @@ Verifies the SPI register file. Tests include:
 
 ### test_pwm_freq
 
-Verifies that the PWM outputs at the correct frequency. Setup writes to registers `0x00`, `0x02`, and `0x04` to enable output and PWM mode on `uo_out[0]` with a 50% duty cycle. Two consecutive rising edges are captured and the period is measured. The frequency is then calculated to compared to the expected frequency of 3000 , with 1% error tolerance.
+Verifies that the PWM outputs at the correct frequency. Setup writes to registers `0x00`, `0x02`, and `0x04` to enable output and PWM mode on `uo_out[0]` with a 50% duty cycle. Two consecutive rising edges are captured and the period is measured. The frequency is then calculated to compared to the expected frequency of 3000 Hz, with 1% error tolerance.
 
 ```python
 period = t_rising_edge2 - t_rising_edge1          
