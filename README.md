@@ -40,11 +40,11 @@ I gained a lot of insights into communication protocols, signal management and m
 
 ## Peripheral Chip Architecture
 
-The design is composed of three Verilog modules instantiated under the standard Tiny Tapeout top-level interface.
-
-This diagram shows the entire peripheral chip and how it is emcompassed in the testbenching workflow using Cocotb and Icarus Verilog.
+This diagram shows the entire peripheral chip and how it is emcompassed in the testbenching workflow using Cocotb and Icarus Verilog:
 
 ![architecture](docs/images/architecture.png)
+
+The design is composed of three Verilog modules instantiated under the standard Tiny Tapeout top-level interface.
 
 The top-level module `tt_um_uwasic_zjj` wires the TT standard ports to the two peripherals. The SPI peripheral decodes incoming transactions and drives five configuration registers as wires into the PWM peripheral. The PWM peripheral uses those registers to control a 16-bit output bus, mapped to a concatenated vector of `uo_out[7:0]` and `uio_out[7:0]`.
 
