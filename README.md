@@ -266,7 +266,7 @@ end
 
 ```
 
-In practice, this bug never triggered during testing because the cocotb `send_spi_transaction` helper always sends exactly 16 bits and immediately deasserts NCS — so bit_counter never had the opportunity to reach 16 and wrap before the transaction ended. However, a real SPI master on hardware is not guaranteed to behave this cleanly. Widening to 5 bits and adding the saturation guard ensures the design is safe against inaccurate or extended transactions from the master chip.
+In practice, this bug never triggered during testing because the cocotb `send_spi_transaction` helper always sends exactly 16 bits and immediately deasserts NCS. Therefore, `bit_counter` never had the opportunity to reach 16 and wrap before the transaction ended. However, a real SPI master on hardware is not guaranteed to behave this cleanly. Widening to 5 bits and adding the saturation guard ensures the design is safe against inaccurate or extended transactions from the master chip.
 
 For the future, I realized a dedicated test sending incorrect transactions (fewer than 16 bits, more than 16 bits, or NCS deasserted mid-transaction) would provide more extended testing for the peripheral chip's ability to handle errors.
 
@@ -305,6 +305,7 @@ The simulation environment runs Python 3.14. Cocotb 2.x introduced breaking chan
 
 | Tool | Version / Details |
 |------|-------------------|
+|Hardware Description Language | Verilog |
 | Verilog simulator | Icarus Verilog |
 | Testbench framework | cocotb 1.9.2 |
 | Python | 3.14 (WSL Ubuntu) |
