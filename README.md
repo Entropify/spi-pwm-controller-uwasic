@@ -7,7 +7,7 @@ A 16-channel SPI-controlled PWM peripheral chip following the SKY130 PDK and Tin
 
 This was my very first silicon tapeout project to help me explore RTL design and verification.
 
-I worked on this project between May - June 2026 in order to join the University of Waterloo ASIC design team when I start first-year university in September 2026.
+I worked on this project between May - June 2026 in order to join the University of Waterloo's ASIC design team when I start first-year university in September 2026.
 
 ---
 ## Table of Contents
@@ -242,7 +242,7 @@ The solution was a `sync_2ff` two-flip-flop synchronizer on all three SPI input 
 
 ### 2. SPI Shift Register and Counter Bugs
 
-After completing the initial implementation, a UW ASIC lead reviewed the design and identified some issues in `spi_peripheral.v`:
+After completing the initial implementation, a University of Waterloo ASIC Design Team lead kindly reviewed the design and identified some issues in `spi_peripheral.v`:
 
 __Indexed write to register__
 
