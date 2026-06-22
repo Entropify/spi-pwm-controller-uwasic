@@ -3,7 +3,7 @@
 # SPI-Controlled PWM Peripheral Chip
 
 
-A 16-channel SPI-controlled PWM peripheral chip following the SKY130 PDK and Tiny Tapeout's standard tile interface. The design accepts SPI commands to configure output enable and PWM mode on a per-pin basis across 16 output channels, and generates a ~3 kHz PWM signal with configurable duty cycle.
+A 16-channel SPI-controlled PWM peripheral chip following SkyWater's 130 nm PDK and Tiny Tapeout's standard tile interface. The design accepts SPI commands to configure output enable and PWM mode on a per-pin basis across 16 output channels, and generates a ~3 kHz PWM signal with configurable duty cycle.
 
 This was my very first silicon tapeout project to help me explore RTL design and verification.
 
