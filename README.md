@@ -7,7 +7,7 @@ A 16-channel SPI-controlled PWM peripheral chip following the SKY130 PDK and Tin
 
 This was my very first silicon tapeout project to help me explore RTL design and verification.
 
-I worked on this project between May - June 2026 in order to join the University of Waterloo ASIC design team when I start university September 2026.
+I worked on this project between May - June 2026 in order to join the University of Waterloo ASIC design team when I start first-year university in September 2026.
 
 ---
 ## Table of Contents
