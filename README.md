@@ -86,7 +86,7 @@ Use this link for a proper interactive 3D render of the GDS (ctrl + click to ope
 
 ## Register Map
 
-All registers reset to `0x00` when `rst_n` is pulled to low and are written via SPI write transactions. Read transactions are not supported and are silently ignored.
+All registers (including those inside the `2ff` synchronizers) reset to `0x00` when `rst_n` is pulled to low and are written via SPI write transactions. Read transactions are not supported and are silently ignored.
 
 | Address | Register | Description | Reset Value |
 |---------|----------|-------------|----------------|
