@@ -42,7 +42,7 @@ I gained a lot of insights into communication protocols, signal management and m
 
 The design is composed of three Verilog modules instantiated under the standard Tiny Tapeout top-level interface:
 
-__(will create architecture diagram soon)__
+![architecture](docs/images/architecture.png)
 
 The top-level module `tt_um_uwasic_zjj` wires the TT standard ports to the two peripherals. The SPI peripheral decodes incoming transactions and drives five configuration registers as wires into the PWM peripheral. The PWM peripheral uses those registers to control a 16-bit output bus, mapped to a concatenated vector of `uo_out[7:0]` and `uio_out[7:0]`.
 
